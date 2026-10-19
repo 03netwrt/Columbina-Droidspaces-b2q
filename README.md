@@ -32,7 +32,7 @@ Format: **AnyKernel3** ZIP — flash via TWRP, DTB/DTBO dipertahankan dari ROM. 
 | `twrp-b2q.tar` (TWRP) | ±96 MB | Lampiran postingan pertama [thread XDA](https://xdaforums.com/t/rom-16-oneui8-0-zflip3-x-rom-zflip5-port-v3-2.4741371/) — **harus login akun XDA** |
 | `Columbina-Droidspaces-b2q-v1.2.zip` (kernel 03NET) | ±17,8 MB | [Release repo ini](https://github.com/03netwrt/Columbina-Droidspaces-b2q/releases) |
 | Odin3 v3.14.4 | ±3 MB | samfw.com |
-| `KernelSU_Next_v3.2.0_33129-release.apk` (Manager) | 9,8 MB | [Release v3.2.0 resmi](https://github.com/KernelSU-Next/KernelSU-Next/releases/tag/v3.2.0) — pilih APK **non-spoofed** |
+| `KernelSU_Next_v3.2.0_33129-release.apk` (Manager) | 9,8 MB | ⬇️ [Download langsung APK-nya di sini](https://github.com/KernelSU-Next/KernelSU-Next/releases/download/v3.2.0/KernelSU_Next_v3.2.0_33129-release.apk) (pilih yang **non-spoofed**; halaman [release v3.2.0 resmi](https://github.com/KernelSU-Next/KernelSU-Next/releases/tag/v3.2.0)) |
 | `droidspaces-webui` modul (karya Latifan) | — | Dari arsip 03NET / Latifan |
 
 Cek ukuran file ROM setelah download: harus **5.840.639.714 bytes**. Kurang = download ulang.
@@ -70,7 +70,7 @@ Cek ukuran file ROM setelah download: harus **5.840.639.714 bytes**. Kurang = do
 
 1. Selesaikan setup awal Android (WiFi, akun Google).
 2. Cek **Settings → About phone**: harus tertulis **OneUI 8.0 / Android 16**.
-3. Copy APK `KernelSU_Next_v3.2.0_33129-release.apk` ke HP → install (izinkan "Install unknown apps").
+3. Download **`KernelSU_Next_v3.2.0_33129-release.apk`** (link download langsung ada di tabel file di atas ☝️) → copy ke HP → install (izinkan "Install unknown apps").
 4. Buka aplikasi **KernelSU Next** → status harus **"Working"** (bukan "Unsupported").
    - Kalau tertulis "Unsupported": kernel tidak terpasang benar — ulangi langkah 5.
    - ⚠️ Pakai Manager dari **release v3.2.0 resmi** (satu keluarga dengan driver di kernel). Jangan ambil dari repo fork `rifsxd` (tidak ada rilis/APK di sana).
@@ -100,7 +100,7 @@ Cek ukuran file ROM setelah download: harus **5.840.639.714 bytes**. Kurang = do
 |---|---|
 | Bootloop setelah flash ROM | Masuk TWRP (Vol Up + Power), ulangi Format Data + flash ROM ulang |
 | TWRP tertimpa stock recovery | Ulangi langkah 2 — pastikan `Auto Reboot` TIDAK dicentang di Odin |
-| KernelSU "Unsupported" | Pastikan zip kernel 03NET di-flash SETELAH ROM; pastikan Manager versi v3.2.0-legacy |
+| KernelSU "Unsupported" | Pastikan zip kernel 03NET di-flash SETELAH ROM; pastikan Manager dari release v3.2.0 resmi (bukan dari repo fork) |
 | Droidspaces tidak GREEN | Pastikan kernel 03NET yang aktif (`uname -r` mengandung `Columbina-03net`); jangan pakai kernel bawaan ROM |
 | Play Integrity / Wallet gagal | Normal di custom ROM (Device Integrity gagal) — tidak ada solusi |
 
