@@ -30,7 +30,7 @@ Format: **AnyKernel3** ZIP — flash via TWRP, DTB/DTBO dipertahankan dari ROM. 
 |---|---|---|
 | `XROM-ZFlip5-V3.2-ZFlip3.zip` (ROM) | ±5,44 GB | [Google Drive](https://drive.usercontent.google.com/download?id=1AFcXi04k7olEQYgWdt6QIr8oFifPub7X&export=download&confirm=t) (link dari thread XDA) |
 | `twrp-b2q.tar` (TWRP) | ±96 MB | Lampiran postingan pertama [thread XDA](https://xdaforums.com/t/rom-16-oneui8-0-zflip3-x-rom-zflip5-port-v3-2.4741371/) — **harus login akun XDA** |
-| `Columbina-Droidspaces-b2q-v1.1.zip` (kernel 03NET) | ±17,8 MB | [Release repo ini](https://github.com/03netwrt/Columbina-Droidspaces-b2q/releases) |
+| `Columbina-Droidspaces-b2q-v1.2.zip` (kernel 03NET) | ±17,8 MB | [Release repo ini](https://github.com/03netwrt/Columbina-Droidspaces-b2q/releases) |
 | Odin3 v3.14.4 | ±3 MB | samfw.com |
 | `KernelSU-Next` Manager APK (**v3.2.0-legacy**) | ±15 MB | [Release v3.2.0-legacy](https://github.com/rifsxd/KernelSU-Next/releases/tag/v3.2.0-legacy) — pilih APK manager |
 | `droidspaces-webui` modul (karya Latifan) | — | Dari arsip 03NET / Latifan |
@@ -61,7 +61,7 @@ Cek ukuran file ROM setelah download: harus **5.840.639.714 bytes**. Kurang = do
 
 ## 5. Flash kernel 03NET
 
-1. Copy `Columbina-Droidspaces-b2q-v1.1.zip` ke HP (kalau belum).
+1. Copy `Columbina-Droidspaces-b2q-v1.2.zip` ke HP (kalau belum).
 2. Di TWRP: **Install** → pilih file kernel → **Swipe to Confirm Flash**.
    - Installer otomatis menanam **Auto-ADB** ke ramdisk: `adbd` selalu listen di **TCP:5555** sejak boot, tanpa dialog otorisasi RSA. Permanen, independen dari Magisk/KSU.
 3. **Reboot → System**. Boot pertama 5–10 menit (wajar).
@@ -106,7 +106,15 @@ Cek ukuran file ROM setelah download: harus **5.840.639.714 bytes**. Kurang = do
 
 ## Spesifikasi kernel 03NET
 
-### v1.1 (terbaru)
+### v1.2 (terbaru, kABI-safe)
+- Basis **5.4.302** (commit `9e6bd77c`) — basis persis kernel X-ROM v3.2 yang terbukti jalan
+- **Patch kABI 001+002** (upstream DroidSpaces GKI): `SYSVIPC`/`POSIX_MQUEUE` aman tanpa geser struct
+- `CGROUP_PIDS` **dimatikan** (tidak dibutuhkan Droidspaces)
+- Opsi baru (kABI-aman): `MACVLAN`, `IP_SET` (+`HASH_IP`/`HASH_NET`, `XT_SET`), NAT66 (`IP6_NF_NAT`/`MASQUERADE`), `XT_MATCH_ADDRTYPE`, `REJECT` (v4+v6), `XT_TARGET_LOG`, `XT_MATCH_RECENT`, `TMPFS_POSIX_ACL`/`XATTR`
+- Tetap: full Droidspaces, KernelSU-Next v3.2.0-legacy, TTL/HL (BFR), modem USB, **Auto-ADB permanen** (TCP:5555)
+- Kernel string: `5.4.302-Columbina-03net` — ⚠️ v1.0/v1.1 **jangan di-flash** (risiko kABI)
+
+### v1.1
 - Semua fitur v1.0, plus **Auto-ADB permanen**: installer menanam `ro.adb.secure=0` + `service.adb.tcp.port=5555` ke ramdisk (`default.prop`/`prop.default`) — `adbd` selalu listen di **TCP:5555** sejak boot tanpa dialog RSA. Independen dari Magisk/KSU (lifeline recovery). Untuk remote `adb connect <IP-HP>:5555` / scrcpy.
 
 ### v1.0
