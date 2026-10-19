@@ -32,7 +32,7 @@ Format: **AnyKernel3** ZIP — flash via TWRP, DTB/DTBO dipertahankan dari ROM. 
 | `twrp-b2q.tar` (TWRP) | ±96 MB | Lampiran postingan pertama [thread XDA](https://xdaforums.com/t/rom-16-oneui8-0-zflip3-x-rom-zflip5-port-v3-2.4741371/) — **harus login akun XDA** |
 | `Columbina-Droidspaces-b2q-v1.2.zip` (kernel 03NET) | ±17,8 MB | [Release repo ini](https://github.com/03netwrt/Columbina-Droidspaces-b2q/releases) |
 | Odin3 v3.14.4 | ±3 MB | samfw.com |
-| `KernelSU-Next` Manager APK (**v3.2.0-legacy**) | ±15 MB | [Release v3.2.0-legacy](https://github.com/rifsxd/KernelSU-Next/releases/tag/v3.2.0-legacy) — pilih APK manager |
+| `KernelSU_Next_v3.2.0_33129-release.apk` (Manager) | 9,8 MB | [Release v3.2.0 resmi](https://github.com/KernelSU-Next/KernelSU-Next/releases/tag/v3.2.0) — pilih APK **non-spoofed** |
 | `droidspaces-webui` modul (karya Latifan) | — | Dari arsip 03NET / Latifan |
 
 Cek ukuran file ROM setelah download: harus **5.840.639.714 bytes**. Kurang = download ulang.
@@ -70,10 +70,10 @@ Cek ukuran file ROM setelah download: harus **5.840.639.714 bytes**. Kurang = do
 
 1. Selesaikan setup awal Android (WiFi, akun Google).
 2. Cek **Settings → About phone**: harus tertulis **OneUI 8.0 / Android 16**.
-3. Copy APK `KernelSU-Next` (**v3.2.0-legacy**) ke HP → install (izinkan "Install unknown apps").
+3. Copy APK `KernelSU_Next_v3.2.0_33129-release.apk` ke HP → install (izinkan "Install unknown apps").
 4. Buka aplikasi **KernelSU Next** → status harus **"Working"** (bukan "Unsupported").
    - Kalau tertulis "Unsupported": kernel tidak terpasang benar — ulangi langkah 5.
-   - ⚠️ Manager HARUS versi v3.2.0-legacy agar cocok dengan driver di kernel.
+   - ⚠️ Pakai Manager dari **release v3.2.0 resmi** (satu keluarga dengan driver di kernel). Jangan ambil dari repo fork `rifsxd` (tidak ada rilis/APK di sana).
 5. Di aplikasi KernelSU: berikan akses root ke aplikasi yang diminta untuk tes.
 
 ## 7. Install modul droidspaces-webui (karya Latifan)
