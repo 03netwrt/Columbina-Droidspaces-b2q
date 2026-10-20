@@ -30,7 +30,7 @@ Format: **AnyKernel3** ZIP — flash via TWRP, DTB/DTBO dipertahankan dari ROM. 
 |---|---|---|
 | `XROM-ZFlip5-V3.2-ZFlip3.zip` (ROM) | ±5,44 GB | [Google Drive](https://drive.usercontent.google.com/download?id=1AFcXi04k7olEQYgWdt6QIr8oFifPub7X&export=download&confirm=t) (link dari thread XDA) |
 | `twrp-b2q.tar` (TWRP) | ±96 MB | Lampiran postingan pertama [thread XDA](https://xdaforums.com/t/rom-16-oneui8-0-zflip3-x-rom-zflip5-port-v3-2.4741371/) — **harus login akun XDA** |
-| `Columbina-Droidspaces-b2q-v1.2.zip` (kernel 03NET) | ±17,8 MB | [Release repo ini](https://github.com/03netwrt/Columbina-Droidspaces-b2q/releases) |
+| `Columbina-Droidspaces-b2q-v1.3.zip` (kernel 03NET) | ±17,8 MB | [Release repo ini](https://github.com/03netwrt/Columbina-Droidspaces-b2q/releases) |
 | Odin3 v3.14.4 | ±3 MB | samfw.com |
 | `KernelSU_Next_v3.2.0_33129-release.apk` (Manager) | 9,8 MB | ⬇️ [Download langsung APK-nya di sini](https://github.com/KernelSU-Next/KernelSU-Next/releases/download/v3.2.0/KernelSU_Next_v3.2.0_33129-release.apk) (pilih yang **non-spoofed**; halaman [release v3.2.0 resmi](https://github.com/KernelSU-Next/KernelSU-Next/releases/tag/v3.2.0)) |
 | `droidspaces-webui` modul (karya Latifan) | — | Dari arsip 03NET / Latifan |
@@ -61,7 +61,7 @@ Cek ukuran file ROM setelah download: harus **5.840.639.714 bytes**. Kurang = do
 
 ## 5. Flash kernel 03NET
 
-1. Copy `Columbina-Droidspaces-b2q-v1.2.zip` ke HP (kalau belum).
+1. Copy `Columbina-Droidspaces-b2q-v1.3.zip` ke HP (kalau belum).
 2. Di TWRP: **Install** → pilih file kernel → **Swipe to Confirm Flash**.
    - Installer otomatis menanam **Auto-ADB** ke ramdisk: `adbd` selalu listen di **TCP:5555** sejak boot, tanpa dialog otorisasi RSA. Permanen, independen dari Magisk/KSU.
 3. **Reboot → System**. Boot pertama 5–10 menit (wajar).
@@ -106,7 +106,13 @@ Cek ukuran file ROM setelah download: harus **5.840.639.714 bytes**. Kurang = do
 
 ## Spesifikasi kernel 03NET
 
-### v1.2 (terbaru, kABI-safe)
+### v1.3 (terbaru — perbaikan bootloop v1.2)
+- **Perbaikan hook execveat KernelSU-Next**: v1.2 kernel panic di `ksu_handle_execveat_ksud` (terbukti dari `/proc/last_kmsg`: hook mengirim alamat userspace mentah `argv.ptr.native`, driver membacanya seolah struct kernel). v1.3 mengirim `&argv` sesuai interface resmi driver — terverifikasi sampai level kode mesin (objdump) sebelum rilis
+- **Banner boot kernel**: baris kedua log kernel sekarang `Powered by 03NET-WRT` (string versi tidak diubah — vermagic modul vendor tetap cocok)
+- Selebihnya identik v1.2: basis **5.4.302** @`9e6bd77c`, patch kABI 001+002, `CGROUP_PIDS` off, full Droidspaces + opsi netfilter kABI-aman, KernelSU-Next v3.2.0-legacy, TTL/HL, modem USB, **Auto-ADB permanen**
+- Kernel string: `5.4.302-Columbina-03net` — ⚠️ v1.2 **jangan di-flash** (bootloop); v1.0/v1.1 juga jangan (risiko kABI)
+
+### v1.2 — ⚠️ JANGAN FLASH (bootloop, digantikan v1.3)
 - Basis **5.4.302** (commit `9e6bd77c`) — basis persis kernel X-ROM v3.2 yang terbukti jalan
 - **Patch kABI 001+002** (upstream DroidSpaces GKI): `SYSVIPC`/`POSIX_MQUEUE` aman tanpa geser struct
 - `CGROUP_PIDS` **dimatikan** (tidak dibutuhkan Droidspaces)
